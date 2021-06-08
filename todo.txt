@@ -1,0 +1,16 @@
+slingshot -
+via console - ask all the questions needed to setup project
+- production
+    - .env files
+    - create ssl certs with route and let encrypt
+    -
+- libraries used
+    - vuetify
+- linter
+    - checkout MegaLinter (https://nvuillam.github.io/mega-linter)
+    - eslint for js
+    -
+- deploy
+    - make it easy to run the project both dev and prod
+
+slingshot:laradock
