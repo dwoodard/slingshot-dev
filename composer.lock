@@ -360,7 +360,7 @@
             "dist": {
                 "type": "path",
                 "url": "/Users/dustin/code/slingshot-dev/packages/Dwoodard/Slingshot",
-                "reference": "d078eefb79781af2fe55aac5bbd17b68f17d6b72"
+                "reference": "a8817e37d7c3b69995ead4c5d6eebc3369d38e71"
             },
             "require": {
                 "illuminate/support": "~7|~8"
@@ -395,9 +395,9 @@
             ],
             "authors": [
                 {
-                    "name": "author name",
-                    "email": "author email",
-                    "homepage": "author homepage"
+                    "name": "Dustin Woodard",
+                    "email": "dustin.woodard@gmail.com",
+                    "homepage": "https://github.com/dwoodard/slingshot-dev"
                 }
             ],
             "description": ":package_description",
@@ -7466,5 +7466,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
