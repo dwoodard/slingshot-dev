@@ -3,16 +3,15 @@
 namespace Dwoodard\Slingshot\Console\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Output\BufferedOutput;
 
-class slingshotLaradock extends Command
+class slingshotProduction extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'slingshot:laradock';
+    protected $signature = 'slingshot:production';
 
     /**
      * The console command description.

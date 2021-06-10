@@ -80,7 +80,7 @@ class SlingshotServiceProvider extends ServiceProvider
         $this->commands([
 
             \Dwoodard\Slingshot\Console\Commands\slingshot::class,
-            \Dwoodard\Slingshot\Console\Commands\slingshotLaradock::class,
+            \Dwoodard\Slingshot\Console\Commands\slingshotProduction::class,
 
 
         ]);
