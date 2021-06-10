@@ -77,6 +77,12 @@ class SlingshotServiceProvider extends ServiceProvider
         ], 'slingshot.views');*/
 
         // Registering package commands.
-        // $this->commands([]);
+        $this->commands([
+
+            \Dwoodard\Slingshot\Console\Commands\slingshot::class,
+            \Dwoodard\Slingshot\Console\Commands\slingshotLaradock::class,
+
+
+        ]);
     }
 }

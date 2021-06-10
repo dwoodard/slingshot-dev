@@ -4,9 +4,9 @@
     "license": "license",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Dustin Woodard",
+            "email": "dustin.woodard@gmail.com",
+            "homepage": "https://github.com/dwoodard/slingshot-dev"
         }
     ],
     "homepage": "https://github.com/dwoodard/slingshot",
