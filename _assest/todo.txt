@@ -1,17 +1,33 @@
 slingshot -
 via console - ask all the questions needed to setup project
-- production
-    - .env files
-    - create ssl certs with route and let encrypt
-    - Create SSL Cert
-     - create droplet
-     - ssh into droplet box
-     - run certbot
-        - web.php
-        http://hubhq.org/.well-known/acme-challenge/xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE
-        Route::get('.well-known/acme-challenge/xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE', function (){
-            return 'xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE.EDJw5uFEvPpqOAMjtYv8w9Ipe6DcRK6vFMCttKGGYBY';
-        });
+Slingshot breaks down to 2 section dev and production
+there could be overlap
+
+- stubs files
+  - deploy
+      - make it easy to run the project both dev and prod
+      - minify if production
+
+
+- libraries used
+    Composer.json:
+        - composer require spatie/laravel-schemaless-attributes (https://github.com/spatie/laravel-schemaless-attributes)
+        - composer require spatie/laravel-permission (https://spatie.be/docs/laravel-permission/v4/installation-laravel)
+        - composer require venturecraft/revisionable (https://github.com/VentureCraft/revisionable)
+        - composer require silviolleite/laravelpwa --prefer-dist (https://github.com/silviolleite/laravel-pwa)
+        - composer require inertiajs/inertia-laravel
+        - composer require wulfheart/pretty_routes
+
+
+    Package.json
+    - vuetify
+    - inertia
+
+
+
+
+- slingshot:laradock
+
 
 - Mix (npm run watch)
     - browserSync
@@ -21,26 +37,14 @@ via console - ask all the questions needed to setup project
 - Auth
     - php artisan ui vue -auth
 
-- libraries used
-    Composer.json:
-        - composer require spatie/laravel-schemaless-attributes (https://github.com/spatie/laravel-schemaless-attributes)
-        - composer require spatie/laravel-permission (https://spatie.be/docs/laravel-permission/v4/installation-laravel)
-        - composer require venturecraft/revisionable (https://github.com/VentureCraft/revisionable)
-        - composer require inertiajs/inertia-laravel
-        - composer require wulfheart/pretty_routes
 
-    Package.json
-    - vuetify
-    - inertia
 
 - linter
     - checkout MegaLinter (https://nvuillam.github.io/mega-linter)
         - npx mega-linter-runner -r insiders -e 'ENABLE=PHP, JAVASCRIPT' -e 'SHOW_ELAPSED_TIME=true'
     - eslint for js
     -
-- deploy
-    - make it easy to run the project both dev and prod
-    - minify if production
+
 
 - helpers
     - create helpers.php
@@ -55,6 +59,17 @@ via console - ask all the questions needed to setup project
              }
     - create helplers.js
 
-slingshot:laradock
 
 
+- production
+    - .env files
+    - create ssl certs with route and let encrypt
+    - Create SSL Cert
+     - create droplet
+     - ssh into droplet box
+     - run certbot
+        - web.php
+        http://hubhq.org/.well-known/acme-challenge/xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE
+        Route::get('.well-known/acme-challenge/xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE', function (){
+            return 'xXbr0bykoVPTzFrToc3vBwmyZnM0DF_X-uJOThshMLE.EDJw5uFEvPpqOAMjtYv8w9Ipe6DcRK6vFMCttKGGYBY';
+        });
