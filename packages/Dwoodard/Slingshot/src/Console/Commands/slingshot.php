@@ -39,7 +39,12 @@ class slingshot extends Command
     {
         $installs = [
             'laradock',
-            'composer packages'
+            'composer packages',
+            'Package Json files',
+            'deploy',
+            'Auth',
+            'linter',
+            'helpers',
         ];
 
         $slingshot = $this->choice('SLINGSHOT', ['all', ...$installs], 'all');
@@ -68,27 +73,30 @@ class slingshot extends Command
             case 'laradock':
                 $this->info('Installing Laradock');
 
+                $this->info('- Clone laradock');
                 if (!file_exists(base_path() . '/laradock')) {
                     shell_exec("git clone https://github.com/Laradock/laradock.git");
                     shell_exec("rm -rf laradock/.git");
+                    $this->info('   - removed laradock/.git');
                     chdir(base_path() . '/laradock');
                     copy('.env.example', '.env',);
                 } else {
-                    $this->info('- laradock was already cloned');
+                    $this->info('   - laradock was already cloned');
                 }
 
 
                 //update .env for laradock
                 $laradockEnv = file_get_contents(base_path() . '/laradock/.env');
                 if (!str_contains($laradockEnv, 'DATA_PATH_HOST=../data')) {
-                    $laradockEnv = str_replace("DATA_PATH_HOST=~/.laradock/data", "DATA_PATH_HOST=../data", $laradockEnv);
+                    $laradockEnv = preg_replace("/DATA_PATH_HOST=.*/", "DATA_PATH_HOST=../data", $laradockEnv);
                     $php_version = $this->anticipate('What version of php (8.0 - 7.4 - 7.3)',
                         ['8.0', '7.4', '7.3'], '7.4'
                     );
                     $laradockEnv = preg_replace("/PHP_VERSION=.*/", "PHP_VERSION=" . $php_version, $laradockEnv);
                     file_put_contents(base_path() . '/laradock/.env', $laradockEnv);
+                    $this->info('   - laradock .env was updated');
                 } else {
-                    $this->info('- laradock .env was already updated');
+                    $this->info('   - laradock .env was already updated');
                 }
 
 
@@ -102,17 +110,15 @@ class slingshot extends Command
                     $env = preg_replace("/DB_USERNAME=.*/", "DB_USERNAME=root", $env);
                     $env = preg_replace("/DB_PASSWORD=.*/", "DB_PASSWORD=root", $env);
                     file_put_contents(base_path() . '/.env', $env);
-                    $this->info('- laravel .env has been saved');
+                    $this->info('   - laravel .env has been saved');
 
                     //Add envs
                     if (!str_contains($env, 'QUEUE_HOST=beanstalkd')) {
-                        file_put_contents($filename, 'QUEUE_HOST=beanstalkd'."\n", FILE_APPEND | LOCK_EX);
+                        file_put_contents($filename, 'QUEUE_HOST=beanstalkd' . "\n", FILE_APPEND | LOCK_EX);
                     }
 
-
-//                    QUEUE_HOST=beanstalkd
                 } else {
-                    $this->info('- laravel .env was already updated');
+                    $this->info('   - laravel .env was already updated');
                 }
 
                 //Add data directory
@@ -125,7 +131,7 @@ class slingshot extends Command
                 }
 
                 //add .gitignore items
-                $this->info("- Check git ".base_path()."/.gitignore");
+                $this->info("- Check git " . base_path() . "/.gitignore");
                 $gitignore = file_get_contents(base_path() . '/.gitignore');
                 $gitignoreChecks = [
                     '/data/',
@@ -133,15 +139,14 @@ class slingshot extends Command
                 ];
                 foreach ($gitignoreChecks as $check) {
                     if (!str_contains($gitignore, $check)) {
-                        file_put_contents(base_path() . '/.gitignore', $check."\n", FILE_APPEND | LOCK_EX);
+                        file_put_contents(base_path() . '/.gitignore', $check . "\n", FILE_APPEND | LOCK_EX);
                     }
                 }
 
 
                 break;
-            case 'composer packages':
-                $this->info('Installing Composer packages');
-                //$this->call('slingshot:composer');
+            default:
+                $this->info("Installing $slingshot");
                 break;
         }
 
