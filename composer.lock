@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5741205f3e18ae43f86d203049242f64",
+    "content-hash": "6589294367a86d243d8ca750417eebd3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -359,8 +359,8 @@
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "/Users/dustin/code/slingshot-dev/packages/Dwoodard/Slingshot",
-                "reference": "d6f632d7e2e8245493c9fad170625bead1cff33d"
+                "url": "./packages/Dwoodard/Slingshot",
+                "reference": "51a3ea369bfec65970b9d4bc9f213b94b52e571b"
             },
             "require": {
                 "illuminate/support": "~7|~8",
@@ -408,8 +408,8 @@
                 "Slingshot"
             ],
             "transport-options": {
-                "symlink": true,
-                "relative": false
+                "symlink": false,
+                "relative": true
             }
         },
         {
